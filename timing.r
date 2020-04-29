@@ -177,14 +177,14 @@ sampleNames<-uuid
 mutDataFiles<-sampleNames
 allMutData<-mapply(mutDataFiles,sampleNames,FUN=function(f,n){
 	cat("-------",n,"-------\n")
-	dat<-read.table(paste("/home/groups/atlas/anurpa/pcawg_timing/MutationData/",f,"_mutations.txt",sep=""),header=T,
+	dat<-read.table(paste("pcawg_timing/MutationData/",f,"_mutations.txt",sep=""),header=T,
 sep="\t",stringsAsFactors=FALSE)
 	return(dat)
 },SIMPLIFY=FALSE)
 names(allMutData)<-sampleNames
 
 #bring in the purity/ploidy information from the ascat run
-sampleQuality<-read.table("/home/groups/atlas/anurpa/pcawg_timing/purity/purity_ploidy.txt",header=T,sep="\t")
+sampleQuality<-read.table("pcawg_timing/purity/purity_ploidy.txt",header=T,sep="\t")
 
 #bring in the segmentations
 ascatSegs<-lapply(sampleNames,function(x){read.table(sprintf("Segmentations/%s_segmentation.txt",x),sep="\t",header=TRUE)
